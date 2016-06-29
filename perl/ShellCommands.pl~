@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+
+$file = "testfile";
+
+'touch $file';
+
+$origaccessed = (stat($file))[8];
+$origmodified = (stat($file))[9];
+print "original accessed = $origaccessed\n";
+print "original modified = $origmodified\n";
+
+sleep(5);
+'touch $file';
+
+$newaccessed = (stat($file))[8];
+$newmodified = (stat($file))[9];
+
+print "new accessed = $newaccessed\n";
+print "new modified = $newmodified\n";
+
+utime $origaccessed, $origmodified, $file;
+
+$finalaccessed = (stat($file))[8];
+$finalmodified = (stat($file))[9];
+print "final accessed = $finalaccessed\n";
+print "final modified = $finalmodified\n";
