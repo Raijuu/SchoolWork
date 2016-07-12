@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-data = `last`.split("\n")
+data = 'last'.split("\n")
 
 users = []
 hosts = []
